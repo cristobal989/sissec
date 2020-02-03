@@ -1,0 +1,14 @@
+language: php
+
+php:
+  - 7.1.5
+
+before_script:
+  - touch database/database.sqlite
+  - composer self-update
+  - composer install --no-interaction
+  - mv .env.travis .env
+  - php artisan key:generate
+
+script:
+- vendor/bin/phpunit
